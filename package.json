@@ -1,0 +1,19 @@
+{
+  "name": "nightsoil",
+  "version": "1.0.0",
+  "description": "a markov chain based naughtyposting machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamjar919/nightsoil.git"
+  },
+  "author": "James Paterson & Thien Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamjar919/nightsoil/issues"
+  },
+  "homepage": "https://github.com/jamjar919/nightsoil#readme"
+}
