@@ -4,14 +4,13 @@ var four = require('./data/s4s.json');
 
 var messages = []
 
-for (i in rshi.data.children){
-	messages.push(rshi.data.children[i].data.title);
-}
+// for (i in rshi.data.children){
+// 	messages.push(rshi.data.children[i].data.title);
+// }
 for (i in four.k){
 	messages.push(four.k[i]);
 }
 
-// console.log(messages);
 
 var c = new mark.Chain(messages);
 var x = mark.markov(c);
