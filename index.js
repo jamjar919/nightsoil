@@ -4,6 +4,8 @@ var emoj = require('./data/emojip.json');
 var e1 = require('./data/e1.json');
 var e2 = require('./data/e2.json');
 var e3 = require('./data/e3.json');
+var e4 = require('./data/e4.json');
+var e5 = require('./data/e5.json');
 var book = require('./data/book.json');
 var cs4s = require('./data/s4s.json');
 var cslb = require('./data/b.json');
@@ -75,7 +77,8 @@ app.get("/gold", function(req, res) {
         messages.push.apply(messages,reddit_add(emoj));
 	messages.push.apply(messages,reddit_add(e1));
 	messages.push.apply(messages,reddit_add(e2));
-	messages.push.apply(messages,reddit_add(e3));
+	messages.push.apply(messages,reddit_add(e3));messages.push.apply(messages,reddit_add(e4));
+    messages.push.apply(messages,reddit_add(e5));
     }
     if (req["query"]["rshitpost"] == "true") {
         messages.push.apply(messages,reddit_add(rshi));
