@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "engines":{
+    "node":"7.1.0",
+    "npm": "3.10.9"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jamjar919/nightsoil.git"
