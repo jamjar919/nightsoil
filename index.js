@@ -1,16 +1,11 @@
-fs = require('fs')
-fs.readFile('data/rshitpost.json', 'utf8', function (err,data) {
-    if (err) {
-        return console.log(err);
-    }
-    doRedditData(JSON.parse(data))
-});
+var mark = require('markovify.js');
 
-function doRedditData(data) {
-    data = data["data"]["children"];
-    sentences = [];
-    for (var i =0; i < data.length; i++) {
-        sentences.push(data[i]["data"]["title"]);
-    }
-    console.log(sentences);
-}
+var test = [
+    "I am not a free man! I am a number!",
+    "Free the slaves",
+    "I am a number of things",
+];
+
+var c = new mark.Chain(test);
+var x = mark.markov(c);
+console.log(x);
