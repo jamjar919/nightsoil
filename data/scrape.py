@@ -1,6 +1,6 @@
 import json, requests, re;
 from html.parser import HTMLParser
-board = "s4s";
+board = "g";
 
 class MLStripper(HTMLParser):
     def __init__(self):
@@ -20,12 +20,14 @@ def strip_tags(html):
 
 posts = list();
 
+
+
 for pagenumber in range(1,10):
-    r = requests.get('http://a.4cdn.org/s4s/'+str(pagenumber)+'.json')
+    r = requests.get('http://a.4cdn.org/'+board+'/'+str(pagenumber)+'.json')
     data = json.loads(r.text);
     for thread in data["threads"]:
         threadnumber = thread["posts"][0]["no"];
-        r = requests.get('http://a.4cdn.org/s4s/thread/'+str(threadnumber)+'.json')
+        r = requests.get('http://a.4cdn.org/'+board+'/thread/'+str(threadnumber)+'.json')
         thread = json.loads(r.text);
         for post in thread["posts"]:
             try:
@@ -36,5 +38,5 @@ for pagenumber in range(1,10):
             except KeyError:
                 print("image only post, skipping");
 
-with open('s4s.json', 'w', encoding="utf-8") as fp:
+with open(board+'.json', 'w', encoding="utf-8") as fp:
     json.dump(posts, fp)
