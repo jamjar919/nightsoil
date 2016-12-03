@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jamjar919/nightsoil/issues"
   },
-  "homepage": "https://github.com/jamjar919/nightsoil#readme"
+  "homepage": "https://github.com/jamjar919/nightsoil#readme",
+  "dependencies": {
+    "locutus": "^2.0.6"
+  }
 }
