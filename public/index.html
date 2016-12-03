@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Gems of wisdom</title>
+        <style>
+            label {
+                margin: 10px;
+            }
+        </style>
+        <script>
+            function getGem() {
+                var params = "onion"+"="+document.getElementById("onion").checked+"&"+
+                "clickhole"+"="+document.getElementById("clickhole").checked+"&"+
+                "book"+"="+document.getElementById("book").checked+"&"+
+                "s4s"+"="+document.getElementById("s4s").checked+"&"+
+                "b"+"="+document.getElementById("b").checked+"&"+
+                "g"+"="+document.getElementById("g").checked+"&"+
+                "pol"+"="+document.getElementById("pol").checked+"&"+
+                "rshitpost"+"="+document.getElementById("rshitpost").checked+"&"+
+                "emoji"+"="+document.getElementById("emoji").checked;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var txtNode = document.createTextNode(xhttp.responseText);
+                        var p = document.createElement('p');
+                        p.appendChild(txtNode);
+                        document.getElementById("gems").insertBefore(p, document.getElementById("gems").childNodes[0]);
+                    }
+                };
+                xhttp.open("GET", "gold?"+params, true);
+                xhttp.send(); 
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Gems of wisdom.</h1>
+        <h4>Courtesy of stuff</h4>
+        <label>The Onion: <input type="checkbox" name="onion" id="onion" checked></label>
+        <label>Clickhole: <input type="checkbox" name="clickhole" id="clickhole" checked></label>
+        <label>Book Titles: <input type="checkbox" name="book" id="book"></label>
+        <label>[s4s]: <input type="checkbox" name="s4s" id="s4s"></label>
+        <label>/b/: <input type="checkbox" name="b" id="b"></label>
+        <label>/pol/: <input type="checkbox" name="pol" id="pol"></label>
+        <label>/g/: <input type="checkbox" name="g" id="g"></label>
+        <label>r/shitpost: <input type="checkbox" name="rshitpost" id="rshitpost"></label>
+        <label>EMOJIIIII: <input type="checkbox" name="emoji" id="emoji"></label><br><br>
+        <button onClick="getGem()">Get Gem</button>
+        <div id="gems"></div>
+    </body>
+</html>
