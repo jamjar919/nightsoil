@@ -6,6 +6,7 @@ var cs4s = require('./data/s4s.json');
 var cslb = require('./data/b.json');
 var cslg = require('./data/g.json');
 var cpol = require('./data/pol.json');
+var clickhole = require('./data/clickhole.json');
 
 var strings = require('locutus/php/strings/')
 var messages = []
@@ -17,10 +18,11 @@ function reddit_add(x){
 	return k;
 }
 
-messages.push.apply(messages,cpol);
-messages.push.apply(messages,cs4s);
-messages.push.apply(messages,cslb);
-messages.push.apply(messages,cslg);
+//messages.push.apply(messages,cpol);
+//messages.push.apply(messages,cs4s);
+//messages.push.apply(messages,cslb);
+//messages.push.apply(messages,cslg);
+messages.push.apply(messages,clickhole);
 
 var c = new mark.Chain(messages);
 
