@@ -1,11 +1,12 @@
 var mark = require('markovify.js');
+var rshi = require('./data/rshitpost.json');
 
-var test = [
-    "I am not a free man! I am a number!",
-    "Free the slaves",
-    "I am a number of things",
-];
+var reddit_goods = [];
 
-var c = new mark.Chain(test);
+for (i in rshi.data.children){
+	reddit_goods.push(rshi.data.children[i].data.title);
+}
+
+var c = new mark.Chain(reddit_goods);
 var x = mark.markov(c);
 console.log(x);
