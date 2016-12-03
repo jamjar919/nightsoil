@@ -48,6 +48,7 @@ app.get("/", function(req, res) {
     res.sendfile('public/index.html')
 });
 app.get("/gold", function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     console.log(req["query"]);
     var messages = [];
     if (req["query"]["pol"] == "true") {
