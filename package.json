@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jamjar919/nightsoil#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "locutus": "^2.0.6",
     "markovify.js": "0.0.6",
     "node-twitter-api": "^1.8.0",

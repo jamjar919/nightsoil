@@ -7,11 +7,13 @@ var cslb = require('./data/b.json');
 var cslg = require('./data/g.json');
 var cpol = require('./data/pol.json');
 var clickhole = require('./data/clickhole.json');
+var onion = require('./data/TheOnion.json');
+var http = require("http");
 
 var strings = require('locutus/php/strings/')
-var messages = []
+//var messages = []
 function reddit_add(x){
-	var k;
+	var k = [];
 	for (i in x.data.children){
 		k.push(x.data.children[i].data.title);
 	}
@@ -22,16 +24,62 @@ function reddit_add(x){
 //messages.push.apply(messages,cs4s);
 //messages.push.apply(messages,cslb);
 //messages.push.apply(messages,cslg);
-messages.push.apply(messages,clickhole);
+//messages.push.apply(messages,clickhole);
+//messages.push.apply(messages,onion);
 
-var c = new mark.Chain(messages);
+//var c = new mark.Chain(messages);
 
 // console.log(c);
 
 // console.log(strings.html_entity_decode(x));
-function printGold(){
+/*function printGold(){
 	console.log("----");
 	var x = mark.markov(c);
 	console.log(strings.html_entity_decode(x));
 }
 setInterval(printGold, 1000);
+*/
+var express = require("express");
+var app = express();
+app.get("/", function(req, res) {
+    res.sendfile('public/index.html')
+});
+app.get("/gold", function(req, res) {
+    console.log(req["query"]);
+    var messages = [];
+    if (req["query"]["pol"] == "true") {
+        messages.push.apply(messages,cpol);
+    }
+    if (req["query"]["s4s"] == "true") {
+        messages.push.apply(messages,cs4s);
+    }
+    if (req["query"]["b"] == "true") {
+        messages.push.apply(messages,cslb);
+    }
+    if (req["query"]["g"] == "true") {
+        messages.push.apply(messages,cslg);
+    }
+    if (req["query"]["clickhole"] == "true") {
+        messages.push.apply(messages,clickhole);
+    }
+    if (req["query"]["onion"] == "true") {
+        messages.push.apply(messages,onion);
+    }
+    if (req["query"]["book"] == "true") {
+        messages.push.apply(messages,reddit_add(book));
+    }
+    if (req["query"]["emoji"] == "true") {
+        messages.push.apply(messages,reddit_add(emoj));
+    }
+    if (req["query"]["rshitpost"] == "true") {
+        messages.push.apply(messages,reddit_add(rshi));
+    }
+    var c = new mark.Chain(messages);
+    var x = mark.markov(c);
+    var gem = strings.html_entity_decode(x);
+    res.send(gem)
+});
+ var port = process.env.PORT || 5000;
+ app.listen(port, function() {
+   console.log("Listening on " + port);
+ });
