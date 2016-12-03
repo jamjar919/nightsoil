@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jamjar919/nightsoil#readme",
   "dependencies": {
-    "locutus": "^2.0.6"
+    "locutus": "^2.0.6",
+    "markovify.js": "0.0.6"
   }
 }
