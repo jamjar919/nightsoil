@@ -79,7 +79,7 @@ app.get("/gold", function(req, res) {
     var gem = strings.html_entity_decode(x);
     res.send(gem)
 });
- var port = process.env.PORT || 5000;
+ var port = 80;
  app.listen(port, function() {
    console.log("Listening on " + port);
  });
